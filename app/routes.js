@@ -47,22 +47,3 @@ router.use('/', (req, res, next) => {
 
 
   // Add your routes here
-
-
-  ///////////////////////////////////////////////////////////////////////////////
-//                                                                           //
-//  ROUTING FOR VERSION MVP 1.0                                                //
-//                                                                           //
-///////////////////////////////////////////////////////////////////////////////
-
-// This moves MVP 1.0 routing routing to mvp-151-1 directory
-router.use(
-  "/design-ideas/mvp-151-1",
-  require("./views/design-ideas/mvp-151-1/_routes")
-);
-
-// This moves current-employment routing to current-employment directory
-router.use(
-  "/design-ideas/mvp-151-1/current-employment/",
-  require("./views/design-ideas/mvp-151-1/current-employment/_routes")
-);
