@@ -6,20 +6,74 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-
-    {% include "govuk-prototype-kit/includes/homepage-top.njk" %}
-
-    <h1 class="govuk-heading-xl">
+<h1 class="govuk-heading-xl">
       {{ serviceName }}
     </h1>
 
 
-      {{ govukButton({
-          text: "Continue",
-          href: "example/where-do-you-live"
-        }) }}
-    {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}
-  </div>
+  {% from "govuk/components/accordion/macro.njk" import govukAccordion %}
+
+{{ govukAccordion({
+  id: "accordion-default",
+  items: [
+    {
+      heading: {
+        text: "MVP iteration 1"
+      },
+      content: {
+        html: '<table class="govuk-table">
+                  <caption class="govuk-table__caption govuk-table__caption--m">Version 1.0</caption>
+                  <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                      <th scope="row" class="govuk-table__header">Link</th>
+                      <td class="govuk-table__cell"><a href="/design-ideas/mvp-151-1/screens.html">MVP v1.0</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                      <th scope="row" class="govuk-table__header">Description</th>
+                      <td class="govuk-table__cell">Testing UC phone claim concept to transfer NSJSA claims onto UC for first MVP</td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                      <th scope="row" class="govuk-table__header">Date</th>
+                      <td class="govuk-table__cell">May 2025</td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                      <th scope="row" class="govuk-table__header">Status</th>
+                      <td class="govuk-table__cell"><span class="govuk-tag govuk-tag" style="white-space: nowrap">Not tested</span></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                      <th scope="row" class="govuk-table__header">Notes</th>
+                      <td class="govuk-table__cell"><details class="govuk-details">
+                                                      <summary class="govuk-details__summary">
+                                                        <span class="govuk-details__summary-text">
+                                                          UR notes
+                                                        </span>
+                                                      </summary>
+                                                      <div class="govuk-details__text">
+                                                       No comments yet
+                                                      </div>
+                                                    </details>
+                      </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                      <th scope="row" class="govuk-table__header">Team</th>
+                      <td class="govuk-table__cell">Alexandra Aggelidis, Alice Roman, Luke Didsbury, Chen Adler</td>
+                    </tr>
+                  </tbody>
+                </table>'
+      }
+    },
+    {
+      heading: {
+        text: "coming soon"
+      },
+      content: {
+        html: '<p class="govuk-body">coming soon</p>'
+      }
+    }
+  ]
+}) }}
+ </div>
 </div>
 
 {% endblock %}
+

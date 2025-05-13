@@ -1,0 +1,95 @@
+{% extends "layouts/layout-unbranded-uc" %}
+
+{% block pageTitle %}
+  Home page – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+          Cases to progress
+      </h1>
+      <div class="govuk-tabs" data-module="govuk-tabs">
+        <h2 class="govuk-tabs__title">
+          Contents
+        </h2>
+        <ul class="govuk-tabs__list">
+          <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+            <a class="govuk-tabs__tab" href="#your-cases-new">
+              Your cases (new view)
+            </a>
+          </li>
+          <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#your-cases">
+              Your cases
+            </a>
+          </li>
+          <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#recent-activity">
+              Recent activity (1)
+            </a>
+          </li>
+        </ul>
+        <div class="govuk-tabs__panel" id="your-cases-new">
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-0"><a href="#" class="govuk-link govuk-link--no-visited-state govuk-link--no-underline">Journal entries</a></h3>
+          <p class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">
+            1
+          </p>
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-0"><a href="#" class="govuk-link govuk-link--no-visited-state govuk-link--no-underline">Other actions</a></h3>
+          <p class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">
+            3
+          </p>
+        </div>
+        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="your-cases">
+          <div class="govuk-checkboxes__item govuk-!-margin-bottom-5">
+            <input class="govuk-checkboxes__input" id="show" name="show" type="checkbox" value="cases-now" checked>
+            <label class="govuk-label govuk-checkboxes__label" for="show">
+              Show only the number of cases 'to look at now'
+            </label>
+          </div>
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-0"><a href="#" class="govuk-link govuk-link--no-visited-state govuk-link--no-underline">Priorities</a></h3>
+          <p class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">
+            0
+          </p>
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-0"><a href="#" class="govuk-link govuk-link--no-visited-state govuk-link--no-underline">Payments due</a></h3>
+          <p class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">
+            0
+          </p>
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-0"><a href="#" class="govuk-link govuk-link--no-visited-state govuk-link--no-underline">Blocked cases</a></h3>
+          <p class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">
+            1
+          </p>
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-0"><a href="#" class="govuk-link govuk-link--no-visited-state govuk-link--no-underline">Journal entries</a></h3>
+          <p class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">
+            3
+          </p>
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-0"><a href="#" class="govuk-link govuk-link--no-visited-state govuk-link--no-underline">Payment accuracy</a></h3>
+          <p class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">
+            1
+          </p>
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-0"><a href="#" class="govuk-link govuk-link--no-visited-state govuk-link--no-underline">Other actions</a></h3>
+          <p class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">
+            1
+          </p>
+        </div>
+        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="recent-activity">
+          <h2 class="govuk-heading-l">Recent activity</h2>
+          <h3 class="govuk-heading-m">
+            tab 3
+        </h3>
+        </div>
+        
+      </div>
+      
+
+      <h1 class="govuk-heading-xl">
+        Cases you manage
+    </h1>
+     
+          
+      </div>
+  </div>
+
+{% endblock %}

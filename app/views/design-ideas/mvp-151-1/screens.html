@@ -1,0 +1,95 @@
+{% extends "layouts/layout-unbranded" %}
+
+{% block pageTitle %}
+  Unbranded page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+      <h1 class="govuk-heading-l">
+          MVP v1.0
+      </h1>
+      <p class="govuk-body">
+          <a
+              href="#"
+              class="govuk-link"
+              rel="noreferrer noopener"
+              target="_blank">Design Documentation on Confluence (opens in new tab)</a>
+      </p>
+
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+                Problem statement
+            </span>
+        </summary>
+        <div class="govuk-details__text">
+            <p>We want to transform NSJSA by using the UC Build for managing and paying NSJSA claims.
+              In the first MVP iteration, we don't want to change the NSJSA claimant experience - users will continue to apply through the existing service. To enable the back-end shift without impacting claimants, we need a reliable and efficient way for agents to transfer claim data from NSJSA Apply into the UC Build, using a proxy process that is based on UC phone claims without requiring direct claimant involvement.
+            </p>
+           
+        </div>
+    </details>
+    <details class="govuk-details">
+        <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+                Outcome statement
+            </span>
+        </summary>
+        <div class="govuk-details__text">
+            <p>By enabling agents to transfer NSJSA claim data onto the UC platform using an adapted phone-claim proxy process, we aim to support payment and maintenance of a new NSJSA claim in a safe way with no impact on the current claimant experience.
+            </p>
+            <p>This integration will help us gain insights on how we can pay claimants correctly and reliably. And it will lay the foundation for future claimant-facing improvements.</p>
+        </div>
+    </details>
+    <details class="govuk-details">
+        <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+                User needs
+            </span>
+        </summary>
+        <div class="govuk-details__text">
+          <ol class="govuk-list govuk-list--number">
+            <li><strong>As a </strong>Service centre agent,<br> 
+              <strong>I need</strong> a way to transfer claim data from NSJSA onto the UC platform,<br>
+              <strong>so that </strong>I can manage NSJSA claims via the UC Build without impacting the claimant's experience.</li><br>
+            <li><strong>As a </strong>Service centre agent,<br> 
+              <strong>I need</strong> to understand which data from NJSA is required by the UC platform and calculation tool,<br>
+              <strong>so that </strong> U can complete the proxy entry accurately and avoid delays.</li><br>
+            <li><strong>As a </strong>Service centre agent,<br> 
+              <strong>I need</strong> the data entry process to mirror existing claim structures,<br>
+              <strong>so that </strong> I can efficiently transfer information without reinterpreting or reformatting it.</li><br>
+              <li><strong>As a </strong>Service centre agent,<br>  
+                <strong>I need</strong> to track and manage NSJSA claims in the new system once they've been transferred,<br>
+                <strong>so that </strong> I can continue processing, updating and paying claims.</li>
+          </ol>
+        </div>
+    </details>
+    <details class="govuk-details">
+        <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+                Hypothesis
+            </span>
+        </summary>
+        <div class="govuk-details__text">
+            <p>We believe that by enabling agents to enter NSJSA claim data using a proxy entry process, will achieve that claims to be managed and paid via the UC service without impacting the claimant experience.
+            </p>
+            <p>We will know this when we test a prototype and users tell us:</p> 
+            <ul class="govuk-list govuk-list--bullet">
+              <li>they can complete the data transfer efficiently without error </li>
+              <li>they can process claims seamlessly using UC and manual workarounds</li>
+              <li>they can support claimants with the same or improved service levels</li>
+            </ul>
+        </div>
+    </details>
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+          <h2 class="govuk-heading-m">Prototype journeys</h2>
+          <a href="agent-dashboard" class="govuk-link govuk-body">Agent proxy journey</a>
+          <p class="govuk-body">Agent created account and complete minimal data gather required</p>
+          
+      </div>
+  </div>
+
+{% endblock %}
