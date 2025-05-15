@@ -1,16 +1,14 @@
 {% extends "layouts/layout-unbranded-uc" %}
 
 {% block pageTitle %}
-  Transferring claim on the claimant's behalf – {{ serviceName }} – GOV.UK Prototype Kit
+  Apply for New Style JSA – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 {% block header %}
   {{ super() }}
+
 {% endblock %}
 {% block beforeContent %}
-  {{ govukBackLink({
-  text: "Back",
-  href: "javascript:history.back()"
-}) }}
+
 {% endblock %}
 {% block content %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
@@ -20,17 +18,20 @@
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l">
       <span class="govuk-caption-l">Claim transfer</span>
-      Transferring claim on the claimant's behalf
+      Apply for New Style JSA
     </h1>
 
     <h2 class="govuk-heading-m">
       What you need to know
     </h2>
-    <p class="govuk-body">A paragraph with some guidance text for agents transferring a claim manually to UC.</p>
+    <p class="govuk-body">A paragraph with some guidance text for agents completing the claim gather</p>
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
 
     {{ govukButton({
-      text: "Continue",
-      href: "about-you"
+      text: "Start claim",
+      href: "#",
+      isStartButton: true
     }) }}
           
       </div>
