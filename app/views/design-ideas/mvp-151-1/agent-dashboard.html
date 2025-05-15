@@ -67,7 +67,7 @@
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full-width">
       <h1 class="govuk-heading-xl">
           Cases to progress
       </h1>
@@ -144,10 +144,139 @@
       </div>
       
 
-      <h1 class="govuk-heading-xl">
+      <h1 class="govuk-heading-xl govuk-!-padding-top-9">
         Cases you manage
     </h1>
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
      
+    {%- from "govuk/components/table/macro.njk" import govukTable -%}
+
+    {{ govukTable({
+      attributes: {
+        "data-module": "moj-sortable-table"
+      },
+      caption: "",
+      head: [
+        {
+          text: "Name",
+          attributes: {
+            "aria-sort": "ascending"
+          }
+        },
+        {
+          text: "Next appointment",
+          attributes: {
+            "aria-sort": "none"
+          }
+        },
+        {
+          text: "Claim start date",
+          attributes: {
+            "aria-sort": "none"
+          }
+        },
+        {
+          text: "Next AP end date",
+          attributes: {
+            "aria-sort": "none"
+          }
+        }
+      ],
+      rows: [
+        [
+          {
+            text: "Claimant 1"
+          },
+          {
+            text: "1 May 2024",
+            attributes: {
+              "data-sort-value": "01052025"
+            }
+          },
+           {
+            text: "15 Apr 2025",
+            attributes: {
+              "data-sort-value": "115042025"
+            }
+          },
+          {
+            text: "14th",
+            attributes: {
+              "data-sort-value": "14"
+            }
+          }
+        ],
+        [
+          {
+            text: "Claimant 2"
+          },
+          {
+            text: "2 May 2024",
+            attributes: {
+              "data-sort-value": "02052025"
+            }
+          },
+           {
+            text: "16 Apr 2025",
+            attributes: {
+              "data-sort-value": "16042025"
+            }
+          },
+          {
+            text: "14th",
+            attributes: {
+              "data-sort-value": "14"
+            }
+          }
+        ],
+        [
+          {
+            text: "Claimant 3"
+          },
+          {
+            text: "3 May 2024",
+            attributes: {
+              "data-sort-value": "03052025"
+            }
+          },
+           {
+            text: "17 Apr 2025",
+            attributes: {
+              "data-sort-value": "17042025"
+            }
+          },
+          {
+            text: "21st",
+            attributes: {
+              "data-sort-value": "21"
+            }
+          }
+        ],
+       [
+          {
+            text: "Claimant 4"
+          },
+          {
+            text: "4 May 2024",
+            attributes: {
+              "data-sort-value": "04052025"
+            }
+          },
+           {
+            text: "18 Apr 2025",
+            attributes: {
+              "data-sort-value": "17042025"
+            }
+          },
+          {
+            text: "14th",
+            attributes: {
+              "data-sort-value": "14"
+            }
+          }
+        ]
+      ]
+    }) }}
           
       </div>
   </div>
