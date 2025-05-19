@@ -1,72 +1,54 @@
 {% extends "govuk-prototype-kit/layouts/unbranded.html" %}
 {% from "internal-service-header/macro.njk" import dwpHeader %}
-{% from "uc/agent-header/macro.njk" import ucAgentHeader %}
 {% from "internal-service-footer/macro.njk" import dwpFooter %}
 
 {% block pageTitle %}
   Unbranded page template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
+
+
 {% block header %}
-{# UC agent header - adapted without crown logo and service name #}
-<header class="uc-agent-header uc-agent-header--sticky  uc-agent-header--sticky" data-module="govuk-header">
-<div class="uc-agent-header__container govuk-width-container">
-<div class="uc-agent-header__logo">
-  <a href="/" class="uc-agent-header__link uc-agent-header__link--homepage">
-    
-    <span class="uc-agent-header__service-name">
-      {{ serviceName }}
-    </span>
-  </a>
-</div>
-<div class="uc-agent-header__content">
-  <button type="button" class="uc-agent-header__menu-button govuk-js-header-toggle" aria-controls="uc-agent-header__navigation__wrapper" hidden>
-    Menu
-  </button>
-  <div id="uc-agent-header__navigation__wrapper" class="uc-agent-header__navigation__wrapper">
-    <nav aria-label="Menu" class="uc-agent-header__navigation">
-      <ul id="navigation" class="uc-agent-header__navigation-list">
-        <li class="uc-agent-header__navigation-item">
-          <a class="uc-agent-header__link" href="#">
-            To-do list
-          </a>
-        </li>
-        <li class="uc-agent-header__navigation-item">
-          <a class="uc-agent-header__link" href="#">
-            Claimants
-          </a>
-        </li>
-        <li class="uc-agent-header__navigation-item">
-          <a class="uc-agent-header__link" href="#">
-            Colleagues
-          </a>
-        </li>
-        <li class="uc-agent-header__navigation-item">
-          <a class="uc-agent-header__link" href="#">
-            Teams
-          </a>
-        </li>
-        <li class="uc-agent-header__navigation-item">
-          <a class="uc-agent-header__link" href="#" rel="noopener noreferrer">
-            New NSJSA claim
-          </a>
-        </li>
-        <li class="uc-agent-header__navigation-item">
-          <a class="uc-agent-header__link" href="#" target=_blank rel="noopener noreferrer">
-            Diary
-            <span class="govuk-visually-hidden">(opens in a new tab)</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <div class="uc-agent-header__profile">
-      <span id="current-user">Joe Bloggs</span>:
-      <a class="uc-agent-header__link uc-agent-header__profile-link" href="/sign-out" aria-describedby="current-user">Sign out</a>
-    </div>
-  </div>
-</div>
-</div>
-</header>
+{# UC agent header - adapted without crown logo #}
+{% from "internal-service-header/macro.njk" import dwpHeader %}
+
+{{
+    dwpHeader({
+        serviceName: serviceName ,
+        serviceHref: '/',
+        action: "Sign out",
+        actionHref: "#",
+        container: true,
+        navigation: {
+          items: [
+              {
+                  href: "#",
+                  text: "To-do list"
+              },
+              {
+                  href: "#",
+                  text: "Claimants"
+              },
+              {
+                  href: "#",
+                  text: "Colleagues"
+              },
+              {
+                  href: "#",
+                  text: "Teams"
+              },
+              {
+                  href: "#",
+                  text: "New NSJSA claim"
+              },
+              {
+                  href: "#",
+                  text: "Diary"
+              }
+          ]
+      }  
+    })
+}}
 {% endblock %}
 
 {% block content %}

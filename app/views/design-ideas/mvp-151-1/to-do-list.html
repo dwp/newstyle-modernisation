@@ -1,0 +1,75 @@
+{% extends "layouts/layout-unbranded-uc" %}
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+      {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+      
+
+{% block pageTitle %}
+  To-do list – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+{% block header %}
+  {{ super() }}
+  {% include "design-ideas/mvp-151-1/includes/impersonation-banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+
+
+{% from "uc/claimant-navigation/macro.njk" import ucClaimantNavigation %}
+
+{{
+ucClaimantNavigation({
+    "items": [
+
+    {
+        "href": "#",
+        "text": "To-do list",
+        "active": true
+    },
+    {
+        "href": "#",
+        "text": "Journal"
+    }
+    ]
+})
+}}
+{% endblock %}
+{% block content %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+
+{% from "uc/action-cards/macro.njk" import ucActionCards %}
+
+{{
+ucActionCards({
+    "cards": [
+        {
+            "title": "Claim start date",
+            "titleUrl": "#start-date"
+        },
+        {
+            "title": "National Insurance number",
+            "titleUrl": "#nino"
+        },
+        {
+            "title": "Bank details",
+            "titleUrl": "#bank-details"
+        }
+    ]
+})
+}}
+
+
+
+          
+      </div>
+  </div>
+
+{% endblock %}
