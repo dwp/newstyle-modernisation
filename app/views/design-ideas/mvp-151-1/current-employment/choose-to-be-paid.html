@@ -1,0 +1,52 @@
+{% extends "layouts/layout-unbranded-uc" %}
+
+{% block pageTitle %}
+Can the claimant choose if they’re paid for this voluntary work? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+{% block header %}
+  {{ super() }}
+  {% include "design-ideas/mvp-151-1/includes/impersonation-banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-xl">Current employment</span>
+        Can the claimant choose if they’re paid for this voluntary work?
+      </h1>
+
+      <form action="choose-to-be-paid" method="post">
+
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "ce-voluntary-work-can-you-choose",
+          name: "ceVoluntaryWorkCanYouChoose",
+          items: [{
+            value: "yes",
+            text: "Yes",
+            checked: checked("ceVoluntaryWorkCanYouChoose", "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: checked("ceVoluntaryWorkCanYouChoose", "no")
+          }]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

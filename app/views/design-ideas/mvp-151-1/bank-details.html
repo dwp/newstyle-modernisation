@@ -1,0 +1,104 @@
+{% extends "layouts/layout-unbranded-uc" %}
+
+{% block pageTitle %}
+  What are the claimant's bank details? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+{% block header %}
+  {{ super() }}
+  {% include "design-ideas/mvp-151-1/includes/impersonation-banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+        <span class="govuk-caption-xl">Bank details</span>
+        What are the claimant's bank details?
+      </h1>
+
+      <form action="to-do-list" method="post">
+
+        {% call govukFieldset({
+        }) %}
+
+        <p>This is the account their New Style Jobseeker&rsquo;s Allowance will be paid into.</p>
+
+        {{ govukDetails({
+            summaryText: "What to do if the claimant doesn't have a bank account",
+            html: '<p>We can use an account of a trusted family member or friend if they don&rsquo;t have a bank account.</p>
+            <p><a href="to-do-list">Continue without providing bank details</a></p>'
+        }) }}
+
+        {{ govukInput({
+            label: {
+                text: "Name of account holder"
+            },
+            id: "pay-account-holder",
+            name: "pay-account-holder",
+            value: data['pay-account-holder'],
+            classes: "govuk-input--width-20"
+        }) }}
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="sort-code">
+            Sort code
+          </label>
+          <!-- <div id="sort-code-hint" class="govuk-hint">
+            Must be 6 digits long
+          </div> -->
+          <input class="govuk-input govuk-input--width-5" id="sort-code" name="sort-code" type="text" spellcheck="false" aria-describedby="sort-code-hint" inputmode="numeric" value="{{ data['sort-code'] }}">
+        </div>
+
+
+        {{ govukInput({
+            label: {
+                text: "Account number"
+            },
+            id: "pay-account-number",
+            name: "pay-account-number",
+            value: data['pay-account-number'],
+            classes: "govuk-input--width-20",
+            type: "number",
+            attributes: {
+                "maxlength": "18"
+            }
+        }) }}
+
+        {{ govukInput({
+            label: {
+                text: "Building society roll or reference number (optional)"
+            },
+            id: "pay-reference-number",
+            name: "pay-reference-number",
+            value: data['pay-reference-number'],
+            classes: "govuk-input--width-20",
+            type: "number",
+            hint: {
+                text: "If the building society uses a roll or reference number, they will find it on their passbook."
+            },
+            attributes: {
+                "maxlength": "18"
+            }
+        }) }}
+
+
+        {% endcall %}
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+    {{ govukButton({
+      text: "Done"
+    }) }}
+   </form>      
+  </div>
+</div>
+
+{% endblock %}
