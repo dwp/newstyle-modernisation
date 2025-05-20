@@ -1,0 +1,52 @@
+{% extends "layouts/layout-unbranded-uc" %}
+
+{% block pageTitle %}
+  How many hours a week does the claimant normally work in this job? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+{% block header %}
+  {{ super() }}
+  {% include "design-ideas/mvp-151-1/includes/impersonation-banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-xl">Current employment</span>
+        How many hours a week does the claimant normally work in this job?
+      </h1>
+
+      <form action="hours" method="post">
+
+        <!-- {% set jobref = "job" + data["jobnum"] + "-" %} -->
+
+        {% call govukFieldset({
+        }) %}
+
+        <p class="govuk-hint">Enter their average hours as a whole number, rounded down to the nearest hour</p>
+
+        <div class="govuk-form-group govuk-short-input">
+            <label class="govuk-label govuk-visually-hidden" for="ce-hours-worked-a-week">Average hours worked a week</label>
+            <input value="{{ data['ceHoursWorkedAWeek'] }}" class="govuk-input govuk-input--width-3 govuk-!-margin-right-2" id="ce-hours-worked-a-week" name="ceHoursWorkedAWeek" type="number" maxlength="2">
+            <span class="govuk-body">hours</span>
+        </div>
+
+        {% endcall %}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

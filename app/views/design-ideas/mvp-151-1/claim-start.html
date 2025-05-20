@@ -1,0 +1,75 @@
+{% extends "layouts/layout-unbranded-uc" %}
+
+{% block pageTitle %}
+  Claim start date – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+{% block header %}
+  {{ super() }}
+  {% include "design-ideas/mvp-151-1/includes/impersonation-banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-xl">Claim start date</span>
+      When did the claimant want to their claim?
+    </h1>
+
+    <p>The claimant can ask to have their claim backdated by up to 3 months.</p>
+
+    <form action="to-do-list" method="post">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" role="group" aria-describedby="claim-start-hint">
+          <div id="claim-start-hint" class="govuk-hint">
+            For example, 01 08 2022
+          </div>
+          <div class="govuk-date-input" id="claim-start">
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="claim-start-day">
+                  Day
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="claim-start-day" name="claim-start-day" type="text" inputmode="numeric" value="{{ data['claim-start-day'] }}">
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="claim-start-month">
+                  Month
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="claim-start-month" name="claim-start-month" type="text" inputmode="numeric" value="{{ data['claim-start-month'] }}">
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="claim-start-year">
+                  Year
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="claim-start-year" name="claim-start-year" type="text" inputmode="numeric" value="{{ data['claim-start-year'] }}">
+              </div>
+            </div>
+          </div>
+
+        </fieldset>
+      </div>
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+    {{ govukButton({
+      text: "Done"
+    }) }}
+   </form>     
+  </div>
+</div>
+
+{% endblock %}
