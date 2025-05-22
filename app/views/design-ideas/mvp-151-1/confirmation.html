@@ -11,10 +11,7 @@
   {% include "design-ideas/mvp-151-1/includes/impersonation-banner.html" %}
 {% endblock %}
 {% block beforeContent %}
-  {{ govukBackLink({
-  text: "Back",
-  href: "javascript:history.back()"
-}) }}
+{% include "design-ideas/mvp-151-1/includes/back-link-language-toggle.html" %}
 {% endblock %}
 {% block content %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
@@ -24,13 +21,13 @@
   <div class="govuk-grid-column-two-thirds">
 
 
-      <div class="govuk-panel govuk-panel--confirmation">
+      <div class="govuk-panel govuk-panel--confirmation govuk-!-margin-bottom-6">
   <h1 class="govuk-panel__title">
    Account created
   </h1>
-  <div class="govuk-panel__body govuk-!-font-weight-bold govuk-!-font-size-19">
+  <!-- <div class="govuk-panel__body govuk-!-font-weight-bold govuk-!-font-size-19">
     You can now make a claim for New Style JSA.<br><br>You must do this within 28 days or you will have to create your account again.
-  </div>
+  </div> -->
 </div>
 
 

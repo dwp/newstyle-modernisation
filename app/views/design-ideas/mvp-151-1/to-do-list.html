@@ -11,12 +11,7 @@
   {% include "design-ideas/mvp-151-1/includes/impersonation-banner.html" %}
 {% endblock %}
 {% block beforeContent %}
-  {{ govukBackLink({
-  text: "Back",
-  href: "javascript:history.back()"
-}) }}
-
-
+{% include "design-ideas/mvp-151-1/includes/language-toggle.html" %} 
 {% from "uc/claimant-navigation/macro.njk" import ucClaimantNavigation %}
 
 {{
@@ -35,6 +30,7 @@ ucClaimantNavigation({
     ]
 })
 }}
+
 {% endblock %}
 {% block content %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
@@ -42,7 +38,6 @@ ucClaimantNavigation({
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-
 
 
 {% from "uc/action-cards/macro.njk" import ucActionCards %}
@@ -53,10 +48,6 @@ ucActionCards({
         {
             "title": "Claim start date",
             "titleUrl": "claim-start"
-        },
-        {
-            "title": "Personal details",
-            "titleUrl": "nino"
         },
         {
             "title": "Bank details",
