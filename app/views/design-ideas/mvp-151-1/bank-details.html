@@ -8,10 +8,8 @@
   {% include "design-ideas/mvp-151-1/includes/impersonation-banner.html" %}
 {% endblock %}
 {% block beforeContent %}
-{{ govukBackLink({
-  text: "Back",
-  href: "javascript:history.back()"
-}) }}
+{% include "design-ideas/mvp-151-1/includes/back-link-language-toggle.html" %}
+
 {% endblock %}
 {% block content %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
@@ -30,13 +28,13 @@
         }) %}
 
         <p>This is the account their New Style Jobseeker&rsquo;s Allowance will be paid into.</p>
-
+{#
         {{ govukDetails({
             summaryText: "What to do if the claimant doesn't have a bank account",
             html: '<p>We can use an account of a trusted family member or friend if they don&rsquo;t have a bank account.</p>
             <p><a href="to-do-list">Continue without providing bank details</a></p>'
         }) }}
-
+#}
         {{ govukInput({
             label: {
                 text: "Name of account holder"
@@ -80,16 +78,18 @@
             name: "pay-reference-number",
             value: data['pay-reference-number'],
             classes: "govuk-input--width-20",
-            type: "number",
-            hint: {
-                text: "If the building society uses a roll or reference number, they will find it on their passbook."
-            },
+            type: "number" ,
+
             attributes: {
                 "maxlength": "18"
             }
         }) }}
 
-
+{# Hint text for Building society roll bumber - add back in after 'type'
+            hint: {
+                text: "If the building society uses a roll or reference number, they will find it on their passbook."
+            },
+#}
         {% endcall %}
 
     {% from "govuk/components/button/macro.njk" import govukButton %}

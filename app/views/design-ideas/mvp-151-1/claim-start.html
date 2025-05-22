@@ -8,10 +8,7 @@
   {% include "design-ideas/mvp-151-1/includes/impersonation-banner.html" %}
 {% endblock %}
 {% block beforeContent %}
-{{ govukBackLink({
-  text: "Back",
-  href: "javascript:history.back()"
-}) }}
+{% include "design-ideas/mvp-151-1/includes/back-link-language-toggle.html" %}
 {% endblock %}
 {% block content %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
@@ -21,10 +18,10 @@
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l">
       <span class="govuk-caption-xl">Claim start date</span>
-      When did the claimant want to their claim?
+      What is the claim start date?
     </h1>
 
-    <p>The claimant can ask to have their claim backdated by up to 3 months.</p>
+    <p>This will be the same as the IDOC (initial date of claim).</p>
 
     <form action="to-do-list" method="post">
 
