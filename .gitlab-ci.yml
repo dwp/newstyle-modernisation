@@ -20,4 +20,4 @@ todo-check:
 heroku-site-publish:
   extends: .heroku-site-publish-template
   variables:
-    HEROKU_APP_NAME: newstyle-modernisation-2ec4dce5a640
+    HEROKU_APP_NAME: newstyle-modernisation
