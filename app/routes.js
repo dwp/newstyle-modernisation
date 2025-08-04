@@ -66,3 +66,9 @@ router.use(
   "/design-ideas/mvp-151-1/current-employment/",
   require("./views/design-ideas/mvp-151-1/current-employment/_routes")
 );
+
+// This moves current-pensions routing to current-pensions directory
+router.use(
+  "/design-ideas/mvp-151-1/current-pensions/",
+  require("./views/design-ideas/mvp-151-1/current-pensions/_routes")
+);

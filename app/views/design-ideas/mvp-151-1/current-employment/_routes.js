@@ -23,7 +23,7 @@ router.post('/guard', function (req, res) {
       res.redirect(NEXT_PATH);
     }
   } else {
-    res.redirect(`${ABS_BASE_PATH}/guard`);
+    res.redirect(`${NEXT_PATH}?completed=employment`);
   }
 });
 
@@ -69,9 +69,21 @@ router.post('/employer-contact', function (req, res) {
   res.redirect(`${ABS_BASE_PATH}/hours`);
 });
 
+/* 
 router.post('/hours', function (req, res) {
   res.redirect(`${ABS_BASE_PATH}/self-employed-or-company-director`);
 });
+*/
+router.post('/hours', function (req, res) {
+  const answer = req.body.ceCurrentWorkType;
+
+  if (answer === 'Voluntary') {
+    res.redirect(`${ABS_BASE_PATH}/another-one`);
+  } else {
+    res.redirect(`${ABS_BASE_PATH}/self-employed-or-company-director`);
+  }
+});
+
 
 router.post('/self-employed-or-company-director', function (req, res) {
   res.redirect(`${ABS_BASE_PATH}/another-one`);
@@ -87,10 +99,11 @@ router.post('/another-one', function (req, res) {
     } else {
       res.redirect(`${ABS_BASE_PATH}/type?job=` + app.locals.currentJobCount);
     }
-  } else {
-    res.redirect(NEXT_PATH);
+  }  else {
+    res.redirect(`${NEXT_PATH}?completed=employment`);
   }
 });
+
 
 router.get('/employer-limit-warning', function (req, res) {
   res.render(`${BASE_PATH}/employer-limit-warning`, {

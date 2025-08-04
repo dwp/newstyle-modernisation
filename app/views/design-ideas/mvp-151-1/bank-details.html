@@ -14,15 +14,17 @@
 {% block content %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
-
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l">
         <span class="govuk-caption-xl">Bank details</span>
         What are the claimant's bank details?
       </h1>
-
-      <form action="to-do-list" method="post">
+    {% if data['checkanswers']=="visited" %}
+    <form action="check-answers" method="post">
+    {% else %}
+    <form action="to-do-list?completed=bankdetails" method="post">
+    {% endif %}
 
         {% call govukFieldset({
         }) %}

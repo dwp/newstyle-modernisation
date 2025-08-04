@@ -1,0 +1,508 @@
+{% extends "layouts/layout-unbranded-uc" %}
+
+{% block pageTitle %}
+  What are the claimant's bank details? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+{% block header %}
+  {{ super() }}
+  {% include "design-ideas/mvp-151-1/includes/impersonation-banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "design-ideas/mvp-151-1/includes/back-link-language-toggle.html" %}
+
+{% endblock %}
+
+{% block content %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+ {% set checkanswers = data['visited'] %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l">Check your answers </h1>
+
+    <!-- CLAIM START -->
+    <h2 class="govuk-heading-m">Claim start date</h2>
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+            Claim start date
+        </dt>
+        <dd class="govuk-summary-list__value">
+            {{ data['claim-start-day'] }} {{ data['claim-start-month'] | monthName }} {{ data['claim-start-year'] }} 
+        </dd>
+        <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/design-ideas/mvp-151-1/claim-start?checkanswers=visited">Change<span class="govuk-visually-hidden"> claim start date</span></a>
+        </dd>
+        </div>
+    </dl>
+
+    <!-- BANK DETAILS -->
+    <h2 class="govuk-heading-m">Bank details</h2>
+    {% if data['pay-account-holder'] %}
+   <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Account holder
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['pay-account-holder'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="/design-ideas/mvp-151-1/bank-details?checkanswers=visited">Change<span class="govuk-visually-hidden"> account holder</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Sort code
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['sort-code'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="/design-ideas/mvp-151-1/bank-details?checkanswers=visited">Change<span class="govuk-visually-hidden"> sort code</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Account number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['pay-account-number'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="/design-ideas/mvp-151-1/bank-details?checkanswers=visited">Change<span class="govuk-visually-hidden"> account number</span></a>
+            </dd>
+          </div>
+          {% if data['pay-reference-number'] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Building sorciety roll or reference number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['pay-reference-number'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="/design-ideas/mvp-151-1/bank-details?checkanswers=visited">Change<span class="govuk-visually-hidden"> roll or reference number</span></a>
+            </dd>
+          </div>  
+          {% endif %}
+        </dl>
+   {% else %}
+   <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Bank details
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Not provided
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="/design-ideas/mvp-151-1/bank-details?checkanswers=visited">Change<span class="govuk-visually-hidden"> bank details</span></a>
+            </dd>
+          </div>
+   </dl>
+   {% endif %}
+
+<!-- CURRENT EMPLOYMENT -->
+      <h2 class="govuk-heading-m">Current work</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Are you in any form of work at the moment?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['ceCurrentlyWorking'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            {% if data['ceCurrentlyWorking']=="No" %}
+            <a href="/design-ideas/mvp-151-1/current-employment/guard?checkanswers=visited">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+            {% endif %}
+          </dd>
+        </div>
+      </dl>
+
+      {% if data['ceCurrentlyWorking']=="Yes" %}
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h3 class="govuk-heading-m">Current employer - First</h3>
+        </div>
+        <div class="govuk-grid-column-one-third govuk-align-right" style="text-align: right;">
+            <a href="/design-ideas/mvp-151-1/current-employment/guard?checkanswers=visited" class="govuk-body" aria-label="Change First Previous employer">Change</a>
+        </div>
+      </div>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-4">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Is this paid or voluntary?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['ceCurrentWorkType'] }}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/6-current-employment/type">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+
+        {% if data['ceCurrentWorkType']=="Voluntary" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Can you choose if you're paid for this voluntary work?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['ceVoluntaryWorkCanYouChoose'] | title }}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/6-current-employment/choose-to-be-paid">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Do you get paid for this voluntary work?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['ceGetPaid'] | title}}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/6-current-employment/get-paid">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+       {% endif %}
+       {% if data['ceCurrentWorkType']=="Paid" or data['ceGetPaid']=="yes" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            How often are you paid?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['current-work-paid'] }}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/6-current-employment/payment-frequency">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            What’s your net pay?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['current-work-paid']=="Weekly" %}
+              £{{ data['current-work-paid-weekly-amount'] }}
+            {% endif %}
+            {% if data['current-work-paid']=="Every 2 weeks" %}
+              £{{ data['current-work-paid-fortnightly-amount'] }}
+            {% endif %}
+            {% if data['current-work-paid']=="Every 4 weeks" %}
+              £{{ data['current-work-paid-4weeks-amount'] }}
+            {% endif %}
+            {% if data['current-work-paid']=="Every month" %}
+              £{{ data['current-work-paid-monthly-amount'] }}
+            {% endif %}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/6-current-employment/payment-frequency">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+        {% endif %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            What is the name of your current employer?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['employer-name'] }}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/6-current-employment/employer-name">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            What is the address of your current employer?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['ce-address-line-1'] }},
+            {% if data['ce-address-line-2'] %} {{ data['ce-address-line-2'] }},
+            {% endif %} 
+            {{ data['ce-address-town'] }}
+            {% if data['ce-address-postcode'] %}
+            , {{ data['ce-address-postcode'] | upper }}
+            {% endif %} 
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="v3_0-citizen/6-current-employment/employer-address">
+              Change
+              <span class="govuk-visually-hidden"> your employers address</span>
+            </a>
+          </dd> -->
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            How many hours a week do you normally work in this job?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['ceHoursWorkedAWeek'] }}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/6-current-employment/hours">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Are you self-employed or a company director in this job?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['ceSelfEmployedOrCompanyDirector'] }}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/6-current-employment/self-employed-or-company-director">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+
+      </dl>
+
+      <div class="govuk-grid-row govuk-!-margin-bottom-9">
+            <div class="govuk-grid-column-two-thirds">
+                <a href="/design-ideas/mvp-151-1/current-employment/type" class="govuk-body">Add another employer</a>
+
+
+            </div>
+            <div class="govuk-grid-column-one-third govuk-align-right" style="text-align: right;">
+                <a href="#" class="govuk-body" aria-label="Remove First previous employer details">Remove employer details</a>
+            </div>
+        </div>
+      {% endif %}
+
+      <!-- CURRENT PENSIONS -->
+      <h2 class="govuk-heading-m">Pension or annuity</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Are you getting money from a pension or annuity?
+          </dt>
+
+          <dd class="govuk-summary-list__value">
+            {{ data['currentPensionGuard'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            {% if data['currentPensionGuard']=="No" %}
+            <a href="/design-ideas/mvp-151-1/current-pensions/guard?checkanswers=visited">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+            {% endif %}
+          </dd>
+        </div>
+
+      </dl>
+
+      <!-- FIRST CURRENT PENSION -->
+      {% if data['currentPensionGuard']=="Yes" %}
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h3 class="govuk-heading-m">Pension or annuity - First</h3>
+        </div>
+        <div class="govuk-grid-column-one-third govuk-align-right" style="text-align: right;">
+            <a href="/design-ideas/mvp-151-1/current-pensions/guard?checkanswers=visited" class="govuk-body" aria-label="Change First Previous employer">Change</a>
+        </div>
+      </div>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-4">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            What is the name of your pension or annuity provider?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['current-pension-provider-name'] }}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/9-pensions/9a-current-pension/provider-name">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            What is the address of your pension or annuity provider?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['current-pension-address-line-1'] }},
+            {% if data['current-pension-address-line-2'] %} {{ data['current-pension-address-line-2'] }},
+            {% endif %} 
+            {{ data['current-pension-address-town'] }}
+            {% if data['current-pension-address-postcode'] %}
+            , {{ data['current-pension-address-postcode'] | upper }}
+            {% endif %} 
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="v3_0-citizen/9-pensions/9a-current-pension/provider-address">
+              Change
+              <span class="govuk-visually-hidden"> your employers address</span>
+            </a>
+          </dd> -->
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            How often is your pension or annuity paid?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['current-pension-paid'] }}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/9-pensions/9a-current-pension/payment-frequency">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+
+        
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            What is your gross pension or annuity?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['current-pension-paid']=="Weekly" %}
+              £{{ data['current-pension-paid-weekly-amount'] }}
+            {% endif %}
+            {% if data['current-pension-paid']=="Every 2 weeks" %}
+              £{{ data['current-pension-paid-fortnightly-amount'] }}
+            {% endif %}
+            {% if data['current-pension-paid']=="Every 4 weeks" %}
+              £{{ data['current-pension-paid-4weeks-amount'] }}
+            {% endif %}
+            {% if data['current-pension-paid']=="Every month" %}
+              £{{ data['current-pension-paid-monthly-amount'] }}
+            {% endif %}
+            {% if data['current-pension-paid']=="Every 3 months" %}
+              £{{ data['current-pension-paid-3monthly-amount'] }}
+            {% endif %}
+            {% if data['current-pension-paid']=="Twice a year" %}
+              £{{ data['current-pension-paid-twiceyearly-amount'] }}
+            {% endif %}
+            {% if data['current-pension-paid']=="Once a year" %}
+              £{{ data['current-pension-paid-yearly-amount'] }}
+            {% endif %}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/9-pensions/9a-current-pension/payment-frequency">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+       
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Does your pension or annuity increase in the next six months?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['currentPensionDoesItIncrease'] }}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/9-pensions/9a-current-pension/increase-does-it">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+
+        {% if data['currentPensionDoesItIncrease']=="Yes" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            When will your pension or annuity increase?
+          </dt>
+          <dd class="govuk-summary-list__value" style="text-transform: capitalize;">
+            {{ data['current-pension-increase-frequency'] }}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/9-pensions/9a-current-pension/increase-when">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+        {% endif %}
+
+      </dl>
+
+      <div class="govuk-grid-row govuk-!-margin-bottom-9">
+            <div class="govuk-grid-column-two-thirds">
+                <a href="/design-ideas/mvp-151-1/current-pensions/provider-name" class="govuk-body">Add another current pension</a>
+
+            </div>
+            <div class="govuk-grid-column-one-third govuk-align-right" style="text-align: right;">
+                <a href="#" class="govuk-body" aria-label="Remove First previous employer details">Remove pension details</a>
+            </div>
+        </div>
+      {% endif %}
+
+
+
+
+ {#  
+<div class="govuk-inset-text">
+  <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="confirm" name="confirm" type="checkbox" value="correct">
+        <label class="govuk-label govuk-checkboxes__label" for="confirm">
+          I confirm the details are correct.
+        </label>
+      </div>
+    </div>
+</div>
+#}      
+
+      <form action="#" method="post" novalidate>
+
+        <input type="hidden" name="answers-checked" value="true">
+
+        {{ govukButton({
+          text: "Submit"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

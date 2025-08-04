@@ -1,0 +1,73 @@
+{% extends "layouts/layout-unbranded-uc" %}
+
+{% block pageTitle %}
+When will your pension or annuity increase? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+{% block header %}
+  {{ super() }}
+  {% include "design-ideas/mvp-151-1/includes/impersonation-banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "design-ideas/mvp-151-1/includes/back-link-language-toggle.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-xl">Pension or annuity</span>
+        When will your pension or annuity increase? 
+      </h1> 
+  
+
+      <form action="increase-when" method="post">
+
+
+        {{ govukRadios({
+          idPrefix: 'current-pension-increase-frequency',
+          name: 'current-pension-increase-frequency',
+          items: [
+              {
+                  value: "july",
+                  text: "July",
+                  checked: checked("current-pension-increase-frequency", "july")
+              },
+              {
+                  value: "august",
+                  text: "August",
+                  checked: checked("current-pension-increase-frequency", "august")
+              },
+              {
+                  value: "september",
+                  text: "September",
+                  checked: checked("current-pension-increase-frequency", "september")
+              },
+              {
+                  value: "october",
+                  text: "October",
+                  checked: checked("current-pension-increase-frequency", "october")
+              },
+              {
+                  value: "november",
+                  text: "November",
+                  checked: checked("current-pension-increase-frequency", "november")
+              },
+              {
+                  value: "december",
+                  text: "December",
+                  checked: checked("current-pension-increase-frequency", "december")
+              }
+          ]
+        })
+      }}
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

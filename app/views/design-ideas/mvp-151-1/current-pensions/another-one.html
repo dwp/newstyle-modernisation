@@ -1,0 +1,53 @@
+{% extends "layouts/layout-unbranded-uc" %}
+
+{% block pageTitle %}
+Do you have another pension or annuity you currently receive? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+{% block header %}
+  {{ super() }}
+  {% include "design-ideas/mvp-151-1/includes/impersonation-banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "design-ideas/mvp-151-1/includes/back-link-language-toggle.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-xl">Pension or annuity</span>
+        Do you have another pension or annuity you currently receive?
+      </h1>
+
+      <form action="another-one" method="post">
+
+        {{ govukRadios({
+          idPrefix: "current-pension-another-one",
+          name: "currentPensionAnotherOne",
+          classes: "govuk-radios--inline",
+          hint: {
+             text: "You do not need to tell us about a pension or annuity if it's inherited from someone who died."
+         },
+          items: [{
+            value: "current-pension-another-one-yes",
+            text: "Yes",
+            checked: checked("currentPensionAnotherOne", "current-pension-another-one-yes")
+          }, 
+        {
+            value: "current-pension-another-one-no",
+            text: "No",
+            checked: checked("currentPensionAnotherOne", "current-pension-another-one-no")
+          }]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

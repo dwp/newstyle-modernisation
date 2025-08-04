@@ -1,0 +1,49 @@
+{% extends "layouts/layout-unbranded-uc" %}
+
+{% block pageTitle %}
+Does your pension or annuity increase in the next six months? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+{% block header %}
+  {{ super() }}
+  {% include "design-ideas/mvp-151-1/includes/impersonation-banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "design-ideas/mvp-151-1/includes/back-link-language-toggle.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-xl">Pension or annuity</span>
+        Does your pension or annuity increase in the next six months?
+      </h1>
+
+      <form action="increase-does-it" method="post">
+
+        {{ govukRadios({
+          idPrefix: "current-pension-does-it-increase",
+          name: "currentPensionDoesItIncrease",
+          classes: "govuk-radios--inline",
+          items: [{
+            value: "Yes",
+            checked: checked("currentPensionDoesItIncrease", "Yes"),
+            text: "Yes"
+          }, {
+            value: "No",
+            checked: checked("currentPensionDoesItIncrease", "No"),
+            text: "No"
+          }]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

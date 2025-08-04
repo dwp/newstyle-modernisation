@@ -41,7 +41,76 @@ ucClaimantNavigation({
 
 
 {% from "uc/action-cards/macro.njk" import ucActionCards %}
+{# if completed claim start date, only show bank details
+eliif comleted bank details, show claim start date
+elif completed claim start date and bank details, show check ansers
+else show claim start date and bank details #}
 
+{% if data['completed']=="claimstart" %}
+{{
+ucActionCards({
+    "cards": [
+        {
+            "title": "Bank details",
+            "titleUrl": "bank-details"
+        }, 
+        {
+            "title": "Current employment",
+            "titleUrl": "current-employment/guard"
+        },
+        {
+            "title": "Current pensions",
+            "titleUrl": "current-pensions/guard"
+        } 
+        
+    ]
+})
+}}
+{% elif data['completed']=="bankdetails" %}
+{{
+ucActionCards({
+    "cards": [
+        {
+            "title": "Current employment",
+            "titleUrl": "current-employment/guard"
+        },
+        {
+            "title": "Current pensions",
+            "titleUrl": "current-pensions/guard"
+        } 
+        
+    ]
+})
+}}
+{% elif data['completed']=="employment" %}
+{{
+ucActionCards({
+    "cards": [
+        {
+            "title": "Current pensions",
+            "titleUrl": "current-pensions/guard"
+        } 
+        
+    ]
+})
+}}
+{% elif data['completed']=="all" %}
+{{
+ucActionCards({
+    "cards": [
+        {
+            "title": "Confirm the details are correct",
+            "titleUrl": "check-answers"
+        }
+        
+    ]
+})
+}}
+<p class="govuk-body govuk-!-margin-top-7">
+<strong><a href="#" class="govuk-link">See a record of completed to-dos in your journal</a> </strong>
+</p>
+
+{% else %}
 {{
 ucActionCards({
     "cards": [
@@ -52,20 +121,23 @@ ucActionCards({
         {
             "title": "Bank details",
             "titleUrl": "bank-details"
-        }
-        ,
+        }, 
         {
             "title": "Current employment",
             "titleUrl": "current-employment/guard"
         },
         {
             "title": "Current pensions",
-            "titleUrl": "bank-details"
-        }
+            "titleUrl": "current-pensions/guard"
+        } 
+        
     ]
 })
 }}
 
+
+
+{% endif %}
 
 
           

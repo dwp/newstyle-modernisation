@@ -22,9 +22,11 @@
     </h1>
 
     <p>This will be the same as the IDOC (initial date of claim).</p>
-
-    <form action="to-do-list" method="post">
-
+    {% if data['checkanswers']=="visited" %}
+    <form action="check-answers" method="post">
+    {% else %}
+    <form action="to-do-list?completed=claimstart" method="post">
+    {% endif %}
       <div class="govuk-form-group">
         <fieldset class="govuk-fieldset" role="group" aria-describedby="claim-start-hint">
           <div id="claim-start-hint" class="govuk-hint">

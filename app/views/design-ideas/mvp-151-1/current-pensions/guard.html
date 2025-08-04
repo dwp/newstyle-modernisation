@@ -1,0 +1,57 @@
+
+{% extends "layouts/layout-unbranded-uc" %}
+
+{% block pageTitle %}
+Are you getting money from a pension or annuity? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+{% block header %}
+  {{ super() }}
+  {% include "design-ideas/mvp-151-1/includes/impersonation-banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "design-ideas/mvp-151-1/includes/back-link-language-toggle.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-xl">Pension or annuity</span>
+        Are you getting money from a pension or annuity?
+      </h1>
+
+      <form action="guard" method="post">
+
+        {{ govukRadios({
+          idPrefix: "current-pension-guard",
+          name: "currentPensionGuard",
+          classes: "govuk-radios--inline",
+          hint: {
+            html: '<p>If you have more than one pension or annuity you will be able to tell us about the others later. You can enter them in any order.</p>
+            <p>A <strong>pension</strong> represents the savings you draw on after you retire from a job, or reach retirement age.</p>
+            <p>An <strong>annuity</strong> is an insurance product that allows you to swap your pension savings for a guaranteed regular income that will last for the rest of your life.</p>
+            <p>You do not need to tell us about a pension or annuity if it\'s inherited from someone who died.</p>
+            '
+          },
+          items: [{
+            value: "Yes",
+            checked: checked("currentPensionGuard", "Yes"),
+            text: "Yes"
+          }, {
+            value: "No",
+            checked: checked("currentPensionGuard", "No"),
+            text: "No"
+          }]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

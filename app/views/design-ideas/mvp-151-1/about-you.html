@@ -7,7 +7,7 @@
   {{ super() }}
 {% endblock %}
 {% block beforeContent %}
-{% include "design-ideas/mvp-151-1/includes/back-link-language-toggle.html" %}
+{#{% include "design-ideas/mvp-151-1/includes/language-toggle.html" %}#}
 {% endblock %}
 {% block content %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
@@ -19,7 +19,7 @@
       <span class="govuk-caption-l">NSJSA claim</span>
       Claimant's personal details
     </h1>
-     <p class="govuk-body"> Enter the claimant's details as they have submitted it on the form.</p>
+     <p class="govuk-body"> Enter the details exactly as they appear on the customer statement.</p>
 
     <form action="address" method="post" novalidate>
     <h2 class="govuk-heading-m">

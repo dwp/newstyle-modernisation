@@ -8,10 +8,9 @@
 {% endblock %}
 {% block header %}
   {{ super() }}
-  {% include "design-ideas/mvp-151-1/includes/impersonation-banner.html" %}
 {% endblock %}
 {% block beforeContent %}
-{% include "design-ideas/mvp-151-1/includes/back-link-language-toggle.html" %}
+{#{% include "design-ideas/mvp-151-1/includes/language-toggle.html" %}#}
 {% endblock %}
 {% block content %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
@@ -34,10 +33,7 @@
       <h2 class="govuk-heading-m">What happens next</h2>
 
       <p class="govuk-body">
-       You can now make a claim for New Style JSA.
-      </p>
-      <p class="govuk-body">
-        <strong>You must do this within 28 days or you will have to create your account again.</strong>
+        Complete the tasks in the to-do list to add more information to this claim.
       </p>
     {{ govukButton({
       text: "Continue",
